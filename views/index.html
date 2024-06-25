@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snoopy</title>
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+    <script>
+        function fetchJson(){
+            fetch('/readjson')
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error))
+        }
+    </script>
+  </head>
+  <body>
+    <h1>Snoopy</h1>
+    <form hx-post="/echo" hx-target="#output" hx-swap="innerHTML">
+        <input type="text" name="textInput" id="textInput">
+        <button type="submit">Enviar</button>
+        <button>Submit</button>
+    </form>
+    <div id="output"></div>
+  </body>
+</html>
