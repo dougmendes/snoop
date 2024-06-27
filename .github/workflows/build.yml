@@ -7,17 +7,10 @@ on:
 
 
 jobs:
+
+
   tests:
-    name: Run tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-
-
-  build:
-    name: Build and analyze
+    name: Run tests and Scan
     runs-on: ubuntu-latest
 
     strategy:
@@ -42,3 +35,11 @@ jobs:
         env:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
