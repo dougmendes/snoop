@@ -1,0 +1,12 @@
+mode: set
+github.com/dougmendes/snoopy/main.go:10.13,16.2 5 0
+github.com/dougmendes/snoopy/controller/home.go:9.51,12.2 2 0
+github.com/dougmendes/snoopy/controller/home.go:14.51,15.33 1 0
+github.com/dougmendes/snoopy/controller/home.go:15.33,18.3 2 0
+github.com/dougmendes/snoopy/controller/scan.go:13.90,15.16 2 1
+github.com/dougmendes/snoopy/controller/scan.go:15.16,18.3 2 1
+github.com/dougmendes/snoopy/controller/scan.go:20.2,23.60 3 1
+github.com/dougmendes/snoopy/controller/scan.go:23.60,26.3 2 1
+github.com/dougmendes/snoopy/controller/scan.go:28.2,29.56 2 1
+github.com/dougmendes/snoopy/controller/scan.go:29.56,31.3 1 0
+github.com/dougmendes/snoopy/controller/scan.go:34.55,36.2 1 0
