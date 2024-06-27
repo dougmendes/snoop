@@ -7,15 +7,38 @@ on:
 
 
 jobs:
+  tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+
   build:
     name: Build and analyze
     runs-on: ubuntu-latest
-    
+
+    strategy:
+      matrix:
+        go-version: [1.19.x, 1.20.x, 1.21.x]
+
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 
-      - uses: sonarsource/sonarqube-scan-action@master
+
+      - name: Set up Go ${{ matrix.go-version }}
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+  
+      - name: Run tests
+        run: go test -coverprofile=coverage.out ./...
+
+      - name: Sonar Scan
+        uses: sonarsource/sonarqube-scan-action@master
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
